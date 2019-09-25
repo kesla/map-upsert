@@ -1,0 +1,20 @@
+{
+  "name": "map-upsert",
+  "version": "0.0.0",
+  "description": "upsert() for (Weak)Map (https://github.com/thumbsupep/proposal-upsert)",
+  "main": "lib/index.js",
+  "repository": "https://github.com/kesla/map-upsert",
+  "author": "David Björklund <david.bjorklund@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^12.7.7",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node test.ts",
+    "prepare": "yarn build"
+  }
+}
