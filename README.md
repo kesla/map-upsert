@@ -6,9 +6,11 @@
 
 This module follows the same logic as outlined in [the proposed api](https://github.com/tc39/proposal-upsert#examples--proposed-api), but the first argument is the Map or WeakMap object.
 
-## Example
+## Example (TypeScript)
 
-```
+```typescript
+import upsert from 'map-upsert'
+
 const map = new Map<string, number>();
 const updateFn = (old: number): number => old + 1;
 const insertFn = () => 0;
