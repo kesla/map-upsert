@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { upsert } from './lib'
+import upsert from './lib'
 
 const updateFn = (old: number): number => old + 1
 const insertFn = () => 0

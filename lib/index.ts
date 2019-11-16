@@ -36,3 +36,5 @@ export function upsert<Key extends object, Value>(
 
   return value
 }
+
+export default upsert
