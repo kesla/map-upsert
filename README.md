@@ -1,10 +1,10 @@
 # map-upsert
 
-`upsert()` for (Weak)Map (https://github.com/thumbsupep/proposal-upsert).
+`upsert()` for (Weak)Map, as defined in the [tc 39 proposal](https://github.com/tc39/proposal-upsert).
 
 ## usage
 
-This module follows the same logic as outlined in https://github.com/tc39/proposal-upsert#examples--proposed-api, but the first argument is the Map or WeakMap object.
+This module follows the same logic as outlined in [the proposed api](https://github.com/tc39/proposal-upsert#examples--proposed-api), but the first argument is the Map or WeakMap object.
 
 ## Example
 
