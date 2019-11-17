@@ -1,13 +1,13 @@
 import assert from 'assert'
 
-import { expectType } from 'tsd'
-
 import upsert from './lib'
 
 const updateFn = (old: number): number => old + 1
 const insertFn = () => 0
 
 let indentation = 0
+
+const expectType = <Type>(_value: Type) => {}
 
 const test = (name: string, fn: () => void) => {
   console.log(`${' '.repeat(indentation)}${name}`)
