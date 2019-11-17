@@ -4,8 +4,22 @@ type InsertFnType<Value> = () => Value
 export function upsert<Key, Value>(
   map: Map<Key, Value>,
   key: Key,
+  updateFn: UpdateFnType<Value> | undefined,
+  insertFn: InsertFnType<Value>
+): Value
+
+export function upsert<Key, Value>(
+  map: Map<Key, Value>,
+  key: Key,
   updateFn?: UpdateFnType<Value>,
   insertFn?: InsertFnType<Value>
+): Value | undefined
+
+export function upsert<Key extends object, Value>(
+  map: WeakMap<Key, Value>,
+  key: Key,
+  updateFn: UpdateFnType<Value> | undefined,
+  insertFn: InsertFnType<Value>
 ): Value
 
 export function upsert<Key extends object, Value>(
@@ -13,14 +27,14 @@ export function upsert<Key extends object, Value>(
   key: Key,
   updateFn?: UpdateFnType<Value>,
   insertFn?: InsertFnType<Value>
-): Value
+): Value | undefined
 
 export function upsert<Key extends object, Value>(
   map: Map<Key, Value> | WeakMap<Key, Value>,
   key: Key,
   updateFn?: UpdateFnType<Value>,
   insertFn?: InsertFnType<Value>
-) {
+): Value | undefined {
   const hasKey = map.has(key)
   let value: Value
 
