@@ -1,6 +1,6 @@
 {
   "name": "map-upsert",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "upsert() for (Weak)Map (https://github.com/thumbsupep/proposal-upsert)",
   "main": "dist/index.js",
   "repository": "https://github.com/kesla/map-upsert",
