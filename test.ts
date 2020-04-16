@@ -1,4 +1,5 @@
 import assert from 'assert'
+import QuickLRU from 'quick-lru'
 
 import upsert from './lib'
 
@@ -98,5 +99,21 @@ test('WeakMap', () => {
 
     const typeTest = upsert(map, foo1, updateFn)
     expectType<number | undefined>(typeTest)
+  })
+})
+
+test('Map like (QuickLRU)', () => {
+  test('basics', () => {
+    const map = new QuickLRU<string, number>({maxSize: 1000})
+
+    assert.strictEqual(upsert(map, 'foo', updateFn, insertFn), 0)
+    assert.strictEqual(upsert(map, 'foo', updateFn, insertFn), 1)
+    assert.strictEqual(upsert(map, 'bar', updateFn, insertFn), 0)
+
+    assert.strictEqual(map.get('foo'), 1)
+    assert.strictEqual(map.get('bar'), 0)
+
+    const typeTest = upsert(map, 'bar', updateFn, insertFn)
+    expectType<number>(typeTest)
   })
 })

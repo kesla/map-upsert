@@ -1,40 +1,18 @@
 type UpdateFnType<Value> = (old: Value) => Value
 type InsertFnType<Value> = () => Value
 
-export function upsert<Key, Value>(
-  map: Map<Key, Value>,
-  key: Key,
-  updateFn: UpdateFnType<Value> | undefined,
-  insertFn: InsertFnType<Value>
-): Value
+export interface MapLike<Key, Value> {
+  has(key: Key): boolean
+  get(key: Key): Value | undefined
+  set(key: Key, value: Value): unknown
+}
 
 export function upsert<Key, Value>(
-  map: Map<Key, Value>,
+  map: MapLike<Key, Value>,
   key: Key,
   updateFn?: UpdateFnType<Value>,
   insertFn?: InsertFnType<Value>
-): Value | undefined
-
-export function upsert<Key extends object, Value>(
-  map: WeakMap<Key, Value>,
-  key: Key,
-  updateFn: UpdateFnType<Value> | undefined,
-  insertFn: InsertFnType<Value>
-): Value
-
-export function upsert<Key extends object, Value>(
-  map: WeakMap<Key, Value>,
-  key: Key,
-  updateFn?: UpdateFnType<Value>,
-  insertFn?: InsertFnType<Value>
-): Value | undefined
-
-export function upsert<Key extends object, Value>(
-  map: Map<Key, Value> | WeakMap<Key, Value>,
-  key: Key,
-  updateFn?: UpdateFnType<Value>,
-  insertFn?: InsertFnType<Value>
-): Value | undefined {
+): Value  {
   const hasKey = map.has(key)
   let value: Value
 
@@ -43,7 +21,8 @@ export function upsert<Key extends object, Value>(
   } else if (!hasKey && insertFn) {
     value = insertFn()
   } else {
-    return map.get(key)
+    // we know this is set cause map.has is true
+    return map.get(key) as Value
   }
 
   map.set(key, value)

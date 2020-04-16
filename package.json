@@ -10,6 +10,7 @@
   "devDependencies": {
     "@types/node": "^12.7.7",
     "prettier": "^1.19.1",
+    "quick-lru": "^5.1.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
   },
