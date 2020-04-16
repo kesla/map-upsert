@@ -104,7 +104,7 @@ test('WeakMap', () => {
 
 test('Map like (QuickLRU)', () => {
   test('basics', () => {
-    const map = new QuickLRU<string, number>({maxSize: 1000})
+    const map = new QuickLRU<string, number>({ maxSize: 1000 })
 
     assert.strictEqual(upsert(map, 'foo', updateFn, insertFn), 0)
     assert.strictEqual(upsert(map, 'foo', updateFn, insertFn), 1)

@@ -12,7 +12,7 @@ export function upsert<Key, Value>(
   key: Key,
   updateFn?: UpdateFnType<Value>,
   insertFn?: InsertFnType<Value>
-): Value  {
+): Value {
   const hasKey = map.has(key)
   let value: Value
 
